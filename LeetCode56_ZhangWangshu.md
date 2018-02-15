@@ -3,8 +3,8 @@
 * 版本：2018-02-13
 
 # 题⽬描述 Merge Intervals
-* Input: List<Interval>
-* Output: List<Interval>
+* Input: List\<Interval\>
+* Output: List\<Interval\>
 
 # 思路报告
 1. 这道题如果直接做的话，假设先将第一个interval存起来，那么第二个interval cur相对于第一个interval last有以下6种位置关系：
