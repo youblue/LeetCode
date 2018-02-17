@@ -56,7 +56,7 @@ class Solution {
 
 
 
-## 如果是求subsequence的代码
+## 如果是求subsequence的代码(自己试着写的，不知道对错)
 * 要求ransomNote组成magazine中的顺序不能变
 
 ```Java
