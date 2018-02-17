@@ -1,5 +1,22 @@
 ## LeetCode383 Ransom Note
 
+## 最efficient代码
+```Java
+char [] chMag = magazine.toCharArray();
+char [] chRan = ransomNote.toCharArray();
+
+int[] map = new int[26];
+for(char ch:chMag) {
+  map[ch - 'a']++;
+}
+for(char ch:chRan) {
+  if(--map[ch - 'a'] < 0) {
+    return false;
+  }
+}
+return true;
+```
+
 ## 参考代码片段
 ```Java
 char [] chMag = magazine.toCharArray();
