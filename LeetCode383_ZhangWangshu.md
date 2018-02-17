@@ -1,5 +1,25 @@
 ## LeetCode383 Ransom Note
 
+## 参考代码片段
+```Java
+char [] chMag = magazine.toCharArray();
+char [] chRan = ransomNote.toCharArray();
+
+Map<character, Integer> map = new HashMap<>();
+for(char ch:chMag) {
+  map.put(ch, map.getOrDefault(ch, 0) + 1);
+}
+for(char ch:chRan) {
+  int count = map.getOrDefault(ch, 0) - 1;
+  if(count < 0) {
+    return false;
+  }
+  map.put(ch, count);
+}
+return true;
+```
+
+
 
 ## 代码（本题是求subset，不是subsequence）
 ```Java
