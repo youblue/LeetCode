@@ -5,9 +5,38 @@
 
 # 题目描述Reconstruct Itinerary
 
+### Test Case 1
+Input: [["JFK","ATL"],["ATL","JFK"]]
+
+Output: ["JFK","ATL","JFK",null]
+
+Expected: ["JFK","ATL","JFK"]
+
+### Test Case 2
+Input: [["JFK","KUL"],["JFK","NRT"],["NRT","JFK"]]
+
+Output: ["JFK","KUL"]
+
+Expected: ["JFK","NRT","JFK","KUL"]
+
+
 ### 代码
 
 ```Java
+// Mine
+
+
+```
+
+
+
+
+
+
+
+
+```Java
+// Solution by Advisor
 class Solution {
     public List<String> findItinerary(String[][] tickets) {
         LinkedList<String> result = new LinkedList<>();
