@@ -1,5 +1,7 @@
 package io;
 
+import java.util.Arrays;
+
 /**
  * Created by wzhang01 on 5/24/2018.
  */
@@ -16,7 +18,7 @@ public class QuickSort {
         }
         int pivot = arr[start];
 
-        int i = 1, j = arr.length - 1;
+        int i = start + 1, j = end;
         while(i <= j) {
             if (arr[i] < pivot) {
                 i++;
@@ -36,10 +38,13 @@ public class QuickSort {
     }
 
     public static void main(String[] args) {
-        int[] arr = {3, 4, 5, 4, 1, 2};
+        int[] arr = {3, 5, 4, 1, 2, 7};
         quickSort(arr, 0, arr.length-1);
+//        Arrays.sort(arr);
         for (int x : arr) {
             System.out.println(x);
         }
+        System.out.println("==========");
+        System.out.println(Arrays.binarySearch(arr, 4));
     }
 }
