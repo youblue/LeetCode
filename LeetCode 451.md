@@ -8,7 +8,7 @@
 # Thoughts
 * The first idea naturally comes into my mind is using HashMap to record character-frequency relationships. Then output from the highest frequency. To fulfill this, we also need a frequency-character map.
 * So my solution is, first reading the string once and build the character-frequency map. Then read the map and build a adjacent list data structure (each key is frequency, and a list of characters linked to each key). Therefore we can output from highest key of this adjacent list.
-
+* I have once tried to use bucket sort instead of Map<Integer, Set\<Character\> > for the adjacent list, but don't know how to write it. I attach another solution from leetcode discussion board.
 
 
 ### Code
@@ -40,6 +40,32 @@ class Solution {
             }
         }
         sb.reverse();
+        return sb.toString();
+    }
+}
+```
+
+```Java
+public class Solution {
+    public String frequencySort(String s) {
+        Map<Character, Integer> map = new HashMap<>();
+        for (char c : s.toCharArray())
+            map.put(c, map.getOrDefault(c, 0) + 1);
+
+        List<Character> [] bucket = new List[s.length() + 1];
+        for (char key : map.keySet()) {
+            int frequency = map.get(key);
+            if (bucket[frequency] == null) bucket[frequency] = new ArrayList<>();
+            bucket[frequency].add(key);
+        }
+
+        StringBuilder sb = new StringBuilder();
+        for (int pos = bucket.length - 1; pos >= 0; pos--)
+            if (bucket[pos] != null)
+                for (char c : bucket[pos])
+                    for (int i = 0; i < map.get(c); i++)
+                        sb.append(c);
+
         return sb.toString();
     }
 }
