@@ -44,7 +44,7 @@ class Solution {
 ```
 
 ```Java
-// Divide and Conquer:
+// Divide and Conquer: Time O(NlogN), Space O(logN) to keep the recursion stack
 // Really don't think Divide and Conquer is a good method for this question
 class Solution {
     public int maxSubArray(int[] nums) {
