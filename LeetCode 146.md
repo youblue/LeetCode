@@ -9,8 +9,43 @@
 http://www.noteanddata.com/leetcode-146-LRU-Cache-java-solution-note-2.html
 https://www.programcreek.com/2013/03/leetcode-lru-cache-java/
 
+Knowledge about LinkedHashMap:
+https://www.geeksforgeeks.org/linkedhashmap-class-java-examples/
+https://www.geeksforgeeks.org/linkedhashmap-removeeldestentry-method-in-java/
+
 ### Code
 ```Java
+class LRUCache {
+    private LinkedHashMap<Integer, Integer> map;
+    private int capacity;
+    public LRUCache(int capacity) {
+        map = new LinkedHashMap<Integer, Integer>(capacity, 0.75F, true) {
+            protected boolean removeEldestEntry(Map.Entry<Integer, Integer> eldest) {
+                return size() > capacity;
+            }
+        };
+        this.capacity = capacity;
+    }
+
+    public int get(int key) {
+        return map.getOrDefault(key, -1);
+    }
+
+    public void put(int key, int value) {
+        map.put(key, value);
+    }
+}
+
+/**
+ * Your LRUCache object will be instantiated and called as such:
+ * LRUCache obj = new LRUCache(capacity);
+ * int param_1 = obj.get(key);
+ * obj.put(key,value);
+ */
+```
+
+```Java
+// Standard solution
 class LRUCache {
     class Node{
         int key;
