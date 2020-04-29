@@ -51,3 +51,46 @@ class FirstUnique {
  * obj.add(value);
  */
 ```
+
+
+```Java
+// A solution found online, using LinkedHashSet can achieve O(n)
+class FirstUnique {
+    Set<Integer> all;
+    Set<Integer> unique;
+
+    public FirstUnique(int[] nums) {
+        all = new HashSet<>();
+        unique = new LinkedHashSet<>();
+
+        for(int x : nums) {
+            add(x);
+        }
+    }
+
+    public int showFirstUnique() {
+        if (unique.size() == 0) {
+            return -1;
+        }
+        return unique.iterator().next();
+    }
+
+    public void add(int value) {
+        if (!all.contains(value)) {
+            all.add(value);
+            unique.add(value);
+        } else {
+            if(unique.contains(value)) {
+                unique.remove(value);
+            }
+        }
+    }
+}
+
+/**
+ * Your FirstUnique object will be instantiated and called as such:
+ * FirstUnique obj = new FirstUnique(nums);
+ * int param_1 = obj.showFirstUnique();
+ * obj.add(value);
+ */
+```
