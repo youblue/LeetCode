@@ -7,6 +7,7 @@
 
 ### Code
 ```Java
+// Yili
 class Solution {
     public boolean checkStraightLine(int[][] coordinates) {
         if (coordinates.length == 2) {
@@ -27,6 +28,7 @@ class Solution {
 ```
 
 ```Java
+// Wangshu
 class Solution {
     public boolean checkStraightLine(int[][] coordinates) {
         int n = coordinates.length;
