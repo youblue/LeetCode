@@ -50,6 +50,27 @@ class Solution {
     }
 }
 
+
+
+
+// Similarly, use a stack
+class Solution {
+    public int majorityElement(int[] nums) {
+        Stack<Integer> stack = new Stack<>();
+        for (int x : nums) {
+            if (!stack.empty() && x != stack.peek()) {
+                stack.pop();
+            } else {
+                stack.push(x);
+            }
+        }
+        return stack.peek();
+    }
+}
+
+
+
+
 // Similarly, Boyer-Moore Voting Algorithm
 class Solution {
     public int majorityElement(int[] nums) {
