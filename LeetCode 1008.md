@@ -1,68 +1,81 @@
 # LeetCode1008
 
-* Author：Wangshu Zhang
-* Version：2020-04-20
+* Author：Yili Zhao & Wangshu Zhang
+* Version：2020-05-23
 
 # Problem: Construct Binary Search Tree from Preorder Traversal
 
-# References:
-https://www.cnblogs.com/Dylan-Java-NYC/p/11119359.html
-https://www.youtube.com/watch?v=U-x4uIhqBF4
-
-Remember not only can binary search by position, we can also binary search by values!
-
 ### Code
 ```Java
-// TLE: NOT WORKING
-
+// Yili
 /**
  * Definition for a binary tree node.
  * public class TreeNode {
  *     int val;
  *     TreeNode left;
  *     TreeNode right;
- *     TreeNode(int x) { val = x; }
+ *     TreeNode() {}
+ *     TreeNode(int val) { this.val = val; }
+ *     TreeNode(int val, TreeNode left, TreeNode right) {
+ *         this.val = val;
+ *         this.left = left;
+ *         this.right = right;
+ *     }
  * }
  */
 class Solution {
     public TreeNode bstFromPreorder(int[] preorder) {
-        return dfs(preorder, 0, preorder.length - 1);
-    }
-    private TreeNode dfs(int[] preorder, int l, int r) {
-        if (l > r) {
-            return null;
+        Stack<TreeNode> stack = new Stack<>();
+        TreeNode root = new TreeNode(preorder[0]);
+        stack.push(root);
+        TreeNode curr = root;
+        int i = 1;
+        while (i < preorder.length) {
+            while (i < preorder.length && preorder[i] < curr.val){
+                curr.left = new TreeNode(preorder[i]);
+                curr = curr.left;
+                stack.push(curr);
+                i++;
+            }
+
+            if (i < preorder.length) {
+                while (!stack.isEmpty() && preorder[i] > stack.peek().val) {
+                    curr = stack.pop();
+                }
+                curr.right = new TreeNode(preorder[i]);
+                curr = curr.right;
+                stack.push(curr);
+                i++;
+            }
         }
-        TreeNode root = new TreeNode(preorder[l]);
-        int rightStart = l + 1;
-        while (rightStart <= r && preorder[rightStart] < preorder[l]) {
-            rightStart ++;
-        }
-        root.left = dfs(preorder, l, rightStart - 1);
-        root.right = dfs(preorder, rightStart, r);
         return root;
     }
 }
-
 ```
 
-
 ```Java
-// WORKING SOLUTION!
+// Wangshu
 /**
  * Definition for a binary tree node.
  * public class TreeNode {
  *     int val;
  *     TreeNode left;
  *     TreeNode right;
- *     TreeNode(int x) { val = x; }
+ *     TreeNode() {}
+ *     TreeNode(int val) { this.val = val; }
+ *     TreeNode(int val, TreeNode left, TreeNode right) {
+ *         this.val = val;
+ *         this.left = left;
+ *         this.right = right;
+ *     }
  * }
  */
 class Solution {
     private int i = 0;
     public TreeNode bstFromPreorder(int[] preorder) {
-        return dfs(preorder, Integer.MIN_VALUE, Integer.MAX_VALUE);
+        return buildTree(preorder, Integer.MIN_VALUE, Integer.MAX_VALUE);
     }
-    private TreeNode dfs(int[] preorder, int min, int max) {
+    private TreeNode buildTree(int[] preorder, int min, int max) {
         if (i >= preorder.length) {
             return null;
         }
@@ -71,8 +84,8 @@ class Solution {
         }
         TreeNode root = new TreeNode(preorder[i]);
         i ++;
-        root.left = dfs(preorder, min, root.val);
-        root.right = dfs(preorder, root.val, max);
+        root.left = buildTree(preorder, min, root.val);
+        root.right = buildTree(preorder, root.val, max);
         return root;
     }
 }
