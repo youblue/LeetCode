@@ -23,3 +23,16 @@ class Solution {
     }
 }
 ```
+
+```Python
+class Solution:
+    def canPermutePalindrome(self, s: str) -> bool:
+        count = collections.Counter(s)
+        chance = 0
+        for c in count:
+            if count[c] % 2 != 0:
+                chance += 1
+                if chance > 1:
+                    return False
+        return True
+```
