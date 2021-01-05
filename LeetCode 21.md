@@ -114,7 +114,7 @@ class Solution {
 ```
 
 ```Python
-# (1)
+# Python3: (1)
 # Definition for singly-linked list.
 # class ListNode:
 #     def __init__(self, val=0, next=None):
@@ -137,7 +137,7 @@ class Solution:
 
 
 ```Python
-# (2)
+# Python3: (2)
 # Definition for singly-linked list.
 # class ListNode:
 #     def __init__(self, val=0, next=None):
