@@ -55,7 +55,7 @@ class Solution {
 class Solution {
     public ListNode deleteDuplicates(ListNode head) {
         ListNode dummy = new ListNode(-1000);
-        dummy.next = head;
+        dummy.next = head; // This line is very important, cannot be deleted !!!
         ListNode prev = dummy;
         while (head != null) {
             while (head.next != null && head.next.val == head.val) {
